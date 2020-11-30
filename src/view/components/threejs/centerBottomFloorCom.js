@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Author: kxwei
+ * @Date: 2020-11-24 20:45:18
+ * @LastEditTime: 2020-11-30 09:12:45
+ * @FilePath: \security\src\view\components\threejs\centerBottomFloorCom.js
+ * @LastModifiedBy: kxwei
+ */
 /**============================================================================
  *
  * Author: luo1o1o1o 
@@ -73,6 +81,9 @@ let centerBottomFloorCom = {
         0
       )
       title.rotateY(this.deg90)
+      // title.visible = false
+      // title.name = 'glxxdq'
+
       floorGroup.add(title)
       return floorGroup
     }

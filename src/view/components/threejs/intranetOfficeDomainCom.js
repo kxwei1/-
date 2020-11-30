@@ -60,18 +60,20 @@ let intranetOfficeDomainCom = {
       // 加入中间三个图标
       let serverImgText = this.addintranetOfficeDomainServerImgText()
       intranetOfficeDomainGroup.add(serverImgText)
-      // 添加title
-      let title = this.addTextGrometry({
-        txt: '内网办公域',
-        fontSize: 20,
-        color: 0x2cfffd,
-        toTop: true
-      })
-      title.geometry.center()
-      title.position.y += title.geometry.boundingBox.max.y
-      title.position.x = this.intranetOfficeDomainSize.x / 2 - 10
-      title.rotateY(Math.PI / 2)
-      intranetOfficeDomainGroup.add(title)
+
+
+      //添加浮动
+      let yxzybgzddBox = this.addFloatBoxFaceText10()
+      // yxzybgzddBox.position.z = z - 130
+      // yxzybgzddBox.position.x = x / 2 - 760
+      yxzybgzddBox.name = 'centerBottomFloor'
+      yxzybgzddBox.position.x = 220
+      yxzybgzddBox.position.y = 150
+
+      // intranetOfficeDomainGroup.add(yxzybgzddBox)
+
+
+
       return intranetOfficeDomainGroup
     },
     /**
@@ -83,51 +85,26 @@ let intranetOfficeDomainCom = {
     addintranetOfficeDomainServerImgText() {
       let serverImgTxtGroup = new THREE.Group()
       serverImgTxtGroup.position.y += 18 + 9
-      //   let imgText1 = this.addNormalImgText({
-      //     imgInfo: {
-      //       x: 50,
-      //       y: 50,
-      //       url: 'server.png'
-      //     },
-      //     txtInfo: {
-      //       txt: '签到服务器',
-      //       fontSize: 14,
-      //       color: 0xffffff
-      //     },
-      //     face: true
-      //   })
-      //   imgText1.position.set(0, 0, this.intranetOfficeDomainSize.z / 4)
-      //   serverImgTxtGroup.add(imgText1)
       let imgText2 = this.addNormalImgText({
         imgInfo: {
-          x: 50,
-          y: 50,
-          url: 'server.png'
+          x: 100,
+          y: 100,
+          url: '图层 10781@2x.png'
         },
         txtInfo: {
-          txt: '签验服务器',
-          fontSize: 14,
+          txt: '内网办公域',
+          fontSize: 30,
           color: 0xffffff
         },
         face: true
       })
       imgText2.position.set(100, 0, 0)
+      imgText2.position.x = 150
+      imgText2.position.y = 50
       serverImgTxtGroup.add(imgText2)
-      //   let imgText3 = this.addNormalImgText({
-      //     imgInfo: {
-      //       x: 50,
-      //       y: 50,
-      //       url: 'server.png'
-      //     },
-      //     txtInfo: {
-      //       txt: '控制服务器',
-      //       fontSize: 14,
-      //       color: 0xffffff
-      //     },
-      //     face: true
-      //   })
-      //   imgText3.position.set(0, 0, -this.intranetOfficeDomainSize.z / 4)
-      //   serverImgTxtGroup.add(imgText3)
+
+
+
       return serverImgTxtGroup
     }
   }

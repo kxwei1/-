@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: kxwei
  * @Date: 2020-11-25 14:42:09
- * @LastEditTime: 2020-11-26 09:58:03
+ * @LastEditTime: 2020-11-30 09:31:42
  * @FilePath: \security\src\view\components\threejs\InternetRegionCom.js
  * @LastModifiedBy: kxwei
  */
@@ -44,7 +44,8 @@ let InternetRegionCom = {
       let plane = this.addPlaneGeometry({
         size: { x: x, y: z },
         color: 0x041648,
-        borderColor: 0x104b77
+        borderColor: 0x104b77,
+        toTop: true
       })
       plane.rotateX(Math.PI / 2)
       marketingBusinessGroup.add(plane)
@@ -78,8 +79,8 @@ let InternetRegionCom = {
       let blueServerLeft1 = this.addNormalImgText({
         imgInfo: {
           x: 90,
-          y: 54,
-          url: 'blue_server.png'
+          y: 90,
+          url: '组 1003 拷贝@2x.png'
         },
         txtInfo: {
           txt: '线上银行',
@@ -117,8 +118,8 @@ let InternetRegionCom = {
       let blueServerLeft3 = this.addNormalImgText({
         imgInfo: {
           x: 90,
-          y: 54,
-          url: 'blue_server.png'
+          y: 90,
+          url: '组 1002 拷贝@2x.png'
         },
         txtInfo: {
           txt: '支付宝',

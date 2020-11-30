@@ -23,44 +23,42 @@ import RightModel from './components/right'
 
 export default {
   name: 'index',
-  components: { 
+  components: {
     LeftModel,
     CenterModel,
-    RightModel
+    RightModel,
   },
-  mounted() {
-    
-  },
-  data () {
-    return {
-      
-    }
+  mounted() {},
+  data() {
+    return {}
   },
   methods: {
     //请求函数demo
     demos() {
       let info = {
-        startDate: 'dddd'
+        startDate: 'dddd',
       }
-      demo(info).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+      demo(info)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     //安全预警TAB切换
     yujingTabChange(query) {
-      switch(query) {
-          case 'jiekou':
-            console.log('jiekou')
-            break;
-          case 'yunxing':
-            console.log('yunxing')
-            break;
-          case 'yingyong':
-            console.log('yingyong')
-            break;
-        } 
+      switch (query) {
+        case 'jiekou':
+          console.log('jiekou')
+          break
+        case 'yunxing':
+          console.log('yunxing')
+          break
+        case 'yingyong':
+          console.log('yingyong')
+          break
+      }
     },
   },
 }
@@ -72,7 +70,7 @@ export default {
   height: 1620px;
   display: flex;
   background: #091436;
-  background-image: url("../assets/img/beijing.jpg");
+  background-image: url('../assets/img/beijing.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   color: #00b2e1;
@@ -103,5 +101,4 @@ export default {
   height: 100%;
   border: 1px solid white;
 }
-
 </style>

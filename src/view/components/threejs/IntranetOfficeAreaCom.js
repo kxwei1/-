@@ -3,7 +3,7 @@
  * @Date: 2020-11-23 16:24:02 
  * @Last Modified by: kxwei
  * @Last Modified time: 2020-11-23 17:20:25
- * Description: 内网办公区域
+ * Description: 生产控制域
  */
 import * as THREE from 'three'
 
@@ -21,7 +21,7 @@ let IntranetOfficeAreaSizeCom = {
     /**
      * @Author: kxwei
      * @Date: 2020-11-17 15:37
-     * @desc: 内网办公区域
+     * @desc: 生产控制域
      */
 
     addIntranetOfficeArea() {

@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Author: kxwei
+ * @Date: 2020-11-26 15:03:32
+ * @LastEditTime: 2020-11-29 15:53:24
+ * @FilePath: \security\src\view\components\threejs\safetyAccessPlatfrom1Com.js
+ * @LastModifiedBy: kxwei
+ */
 /**============================================================================
  *
  * Author: luo1o1o1o 
@@ -40,10 +48,10 @@ let safetyAccessPlatfrom1Com = {
           this.safetyAccessPlatfrom1Size.x / 2 +
           180
         ),
-        this.centerBottomFloorSize.y + 10,
+        this.centerBottomFloorSize.y + 150,
         this.centerBottomFloorSize.z / 2 -
-          this.safetyAccessPlatfrom1Size.z / 2 -
-          2800
+        this.safetyAccessPlatfrom1Size.z / 2 -
+        2800
       )
       // 加入地板
       let plane = this.addPlaneGeometry({
@@ -58,8 +66,8 @@ let safetyAccessPlatfrom1Com = {
       // lightWall.position.y += 2
       // safetyAccessPlatfrom1Group.add(lightWall)
       // 加入中间三个图标
-    //   let serverImgText = this.addsafetyAccessPlatfrom1ServerImgText()
-    //   safetyAccessPlatfrom1Group.add(serverImgText)
+      let serverImgText = this.addsafetyAccessPlatfrom1ServerImgText()
+      safetyAccessPlatfrom1Group.add(serverImgText)
       // 添加title
       let title = this.addTextGrometry({
         txt: '安全接入平台',
@@ -80,56 +88,44 @@ let safetyAccessPlatfrom1Com = {
      * @Date: 2020-11-19 15:55
      * @desc: 当前组件 默认图文
      */
-    // addsafetyAccessPlatfrom1ServerImgText() {
-    //   let serverImgTxtGroup = new THREE.Group()
-    //   serverImgTxtGroup.position.y += 18 + 9
-    //   let imgText1 = this.addNormalImgText({
-    //     imgInfo: {
-    //       x: 50,
-    //       y: 50,
-    //       url: 'server.png'
-    //     },
-    //     txtInfo: {
-    //       txt: '签到服务器',
-    //       fontSize: 14,
-    //       color: 0xffffff
-    //     },
-    //     face: true
-    //   })
-    //   imgText1.position.set(0, 0, this.safetyAccessPlatfrom1Size.z / 4)
-    //   serverImgTxtGroup.add(imgText1)
-    //   let imgText2 = this.addNormalImgText({
-    //     imgInfo: {
-    //       x: 50,
-    //       y: 50,
-    //       url: 'server.png'
-    //     },
-    //     txtInfo: {
-    //       txt: '签验服务器',
-    //       fontSize: 14,
-    //       color: 0xffffff
-    //     },
-    //     face: true
-    //   })
-    //   imgText2.position.set(0, 0, 0)
-    //   serverImgTxtGroup.add(imgText2)
-    //   let imgText3 = this.addNormalImgText({
-    //     imgInfo: {
-    //       x: 50,
-    //       y: 50,
-    //       url: 'server.png'
-    //     },
-    //     txtInfo: {
-    //       txt: '控制服务器',
-    //       fontSize: 14,
-    //       color: 0xffffff
-    //     },
-    //     face: true
-    //   })
-    //   imgText3.position.set(0, 0, -this.safetyAccessPlatfrom1Size.z / 4)
-    //   serverImgTxtGroup.add(imgText3)
-    //   return serverImgTxtGroup
-    // }
+    addsafetyAccessPlatfrom1ServerImgText() {
+      let serverImgTxtGroup = new THREE.Group()
+      serverImgTxtGroup.position.y += 18 + 9
+
+      let VTMBox = this.addFloatBoxFaceText8()
+      // VTMBox.position.z = z - 350
+      // VTMBox.position.x = x / 2 - 960
+      VTMBox.position.y = 80
+      serverImgTxtGroup.add(VTMBox)
+
+      let leftPlane = this.addPlaneGeometry({
+        size: { x: 50, y: 250 },
+        color: 0x28409a,
+        borderColor: 0x28409a
+      })
+      leftPlane.rotateX(Math.PI / 2)
+      leftPlane.rotateY(Math.PI / 2)
+      leftPlane.position.y = 80
+      leftPlane.position.x = 10
+      leftPlane.position.z = 135
+      serverImgTxtGroup.add(leftPlane)
+      let rightPlane = this.addPlaneGeometry({
+        size: { x: 50, y: 250 },
+        color: 0x28409a,
+        borderColor: 0x28409a
+      })
+      rightPlane.rotateX(Math.PI / 2)
+      rightPlane.rotateY(Math.PI / 2)
+
+      rightPlane.position.y = 80
+      rightPlane.position.x = 10
+      rightPlane.position.z = -130
+      serverImgTxtGroup.add(rightPlane)
+
+
+      return serverImgTxtGroup
+
+    }
   }
 }
 export default safetyAccessPlatfrom1Com

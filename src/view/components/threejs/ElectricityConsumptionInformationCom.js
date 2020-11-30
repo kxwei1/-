@@ -52,8 +52,24 @@ let ElectricityConsumptionInformation = {
       let group = new THREE.Group()
       group.position.y = y
       group.position.z = +100
-      let pw = z / 6 // 分成五分排列
+      let pw = z / 6 // 分成五分排列3.
+
+      let title = this.addTextGrometry({
+        txt: '用电信息采集',
+        fontSize: 20,
+        color: 0xffd700,
+        toTop: true
+      })
+      title.geometry.center()
+      title.position.y += title.geometry.boundingBox.max.y
+      title.position.x = this.productionControlDomainSize.x / 2 + 80
+      title.position.z = -80
+      title.rotateY(Math.PI / 2)
+      group.add(title)
+
+
       // 添加 应用服务器集群
+
       let yyfwqjqTxt = this.addTextGrometry({
         txt: '应用服务器集群',
         fontSize: 20,

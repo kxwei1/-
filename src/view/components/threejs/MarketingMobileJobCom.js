@@ -53,6 +53,19 @@ let MarketingMobileJob = {
       let group = new THREE.Group()
       group.position.y = y
       let pw = z / 5 // 分成五分排列
+
+
+      let title = this.addTextGrometry({
+        txt: '营销移动作业',
+        fontSize: 20,
+        color: 0xffd700,
+        toTop: true
+      })
+      title.geometry.center()
+      title.position.y += title.geometry.boundingBox.max.y
+      title.position.x = this.productionControlDomainSize.x / 2 + 45
+      title.rotateY(Math.PI / 2)
+      group.add(title)
       // 添加 应用服务器集群
       let yyfwqjqTxt = this.addTextGrometry({
         txt: '应用服务器集群',
@@ -153,47 +166,48 @@ let MarketingMobileJob = {
       blueServerRight.position.x = imgTxtMargin / 2
       group.add(blueServerRight)
       // 营销移动作业线段
-      let yxydzyLeftLine = this.addLine(
-        [
-          { x: x / 2 - 300, y: 25, z: z / 2 - 180 },
-          { x: x / 2 - 380, y: 25, z: z / 2 - 180 },
-          { x: x / 2 - 380, y: 45, z: z / 2 - 180 },
-          { x: x / 2 - 815, y: 45, z: z / 2 - 180 },
-        ]
+      let yxydzyLeftLine = this.addPolyline(
+
+        {
+          point: [
+            { x: x / 2 - 300, y: 25, z: z / 2 - 180 },
+            { x: x / 2 - 380, y: 25, z: z / 2 - 180 },
+            { x: x / 2 - 380, y: 45, z: z / 2 - 180 },
+            { x: x / 2 - 815, y: 45, z: z / 2 - 180 },
+            { x: x / 2 - 905 - 100, y: 45, z: z / 2 - 180 },
+            { x: x / 2 - 905 - 100, y: 45, z: z / 2 - 15 },
+          ],
+          color: 0x5af9ff,
+          arrow: {
+            show: true,
+            color: 0x5af9ff,
+            scale: 0.8
+          }
+        }
       )
       yxydzyLeftLine.position.y = -36 / 2
       group.add(yxydzyLeftLine)
-      let yxydzyRightLine = this.addLine(
-        [
-          { x: x / 2 - 300, y: 25, z: z / 2 - 30 - 180 },
-          { x: x / 2 - 380, y: 25, z: z / 2 - 30 - 180 },
-          { x: x / 2 - 380, y: 45, z: z / 2 - 30 - 180 },
-          { x: x / 2 - 815, y: 45, z: z / 2 - 30 - 180 },
-        ]
+      let yxydzyRightLine = this.addPolyline(
+
+        {
+          point: [
+            { x: x / 2 - 935 - 100, y: 45, z: z / 2 - 15 },
+            { x: x / 2 - 935 - 100, y: 45, z: z / 2 - 180 - 30 },
+            { x: x / 2 - 815, y: 45, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 380, y: 45, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 380, y: 25, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 300, y: 25, z: z / 2 - 30 - 180 },
+          ],
+          color: 0x5af9ff,
+          arrow: {
+            show: true,
+            color: 0x5af9ff,
+            scale: 0.8
+          }
+        }
       )
       yxydzyRightLine.position.y = -36 / 2
       group.add(yxydzyRightLine)
-
-
-      let yxydzyBackLeftline = this.addLine(
-        [
-          { x: x / 2 - 885 - 65, y: 45, z: z / 2 - 180 - 30 },
-          { x: x / 2 - 935 - 100, y: 45, z: z / 2 - 180 - 30 },
-          { x: x / 2 - 935 - 100, y: 45, z: z / 2 - 15 },
-        ]
-      )
-      yxydzyBackLeftline.position.y = -36 / 2
-      group.add(yxydzyBackLeftline)
-
-      let yxydzyFrontLeftline = this.addLine(
-        [
-          { x: x / 2 - 885 - 65, y: 45, z: z / 2 - 180 },
-          { x: x / 2 - 905 - 100, y: 45, z: z / 2 - 180 },
-          { x: x / 2 - 905 - 100, y: 45, z: z / 2 - 15 },
-        ]
-      )
-      yxydzyFrontLeftline.position.y = -36 / 2
-      group.add(yxydzyFrontLeftline)
       return group
     },
   }

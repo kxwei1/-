@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: kxwei
  * @Date: 2020-11-25 14:42:09
- * @LastEditTime: 2020-11-26 10:27:22
+ * @LastEditTime: 2020-11-30 09:25:19
  * @FilePath: \security\src\view\components\threejs\networkSecurityCom.js
  * @LastModifiedBy: kxwei
  */
@@ -44,12 +44,14 @@ let networkSecurityCom = {
       let plane = this.addPlaneGeometry({
         size: { x: x, y: z },
         color: 0x041648,
-        borderColor: 0x104b77
+        borderColor: 0x104b77,
+        toTop: true
       })
       let plane2 = this.addPlaneGeometry({
         size: { x: x + 220, y: z + 100 },
         color: 0x041648,
-        borderColor: 0x104b77
+        borderColor: 0x104b77,
+        toTop: true
       })
       plane.rotateX(Math.PI / 2)
       marketingBusinessGroup.add(plane)
@@ -58,15 +60,20 @@ let networkSecurityCom = {
       plane2.position.z = -200
 
       let networkSecurityLine = this.addParallelLine(
-        [
-          { x: x / 2 - 300, y: 15, z: z / 2 + 530 },
-          { x: x / 2 - 300, y: 15, z: z / 2 - 349 },
-          { x: x / 2 - 300, y: 15, z: z / 2 - 350 },
-        ],
         {
+          point: [
+            { x: x / 2 - 300, y: 15, z: z / 2 + 530 },
+            { x: x / 2 - 300, y: 15, z: z / 2 - 349 },
+            { x: x / 2 - 300, y: 15, z: z / 2 - 350 },
+          ],
           color: 0x1eeafa,
           startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+          endDirection: 'h', // 结束点为垂直
+          arrow: {
+            show: true,
+            color: 0x1eeafa,
+            scale: 0.8
+          }
         }
       )
       networkSecurityLine.position.y = -36 / 2
@@ -160,7 +167,7 @@ let networkSecurityCom = {
         imgInfo: {
           x: 46,
           y: 54,
-          url: 'yellow_server.png'
+          url: '防火墙(2)@2x.png'
         },
         txtInfo: {
           txt: '防火墙',

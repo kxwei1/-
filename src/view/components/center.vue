@@ -6,6 +6,7 @@
 
 <script>
 import * as THREE from 'three'
+import TWEEN from '@tweenjs/tween.js' // 计算动画运行轨迹
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import drawImgMixin from './threejs/drawImgMixin'
 import centerBottomFloorCom from './threejs/centerBottomFloorCom'
@@ -55,11 +56,13 @@ export default {
       renderer: '', // 渲染器
       width: 5160,
       height: 1264,
+      hoverDict: {
+        centerBottomFloor: 'glxxdq',
+      },
     }
   },
   async mounted() {
     this.font = await this.loaderFont()
-
     this.initThreeJs()
     this.setImage()
   },
@@ -74,6 +77,7 @@ export default {
       this.initScene()
       this.initCamera()
       this.initLight()
+      this.initMouseEvent()
     },
 
     /**
@@ -92,7 +96,9 @@ export default {
         logarithmicDepthBuffer: true,
       })
       // this.renderer.setPixelRatio(2) // 设置超级清晰
-      this.scene.add(new THREE.AxesHelper(500))
+      this.renderer.setPixelRatio(window.devicePixelRatio)
+
+      // this.scene.add(new THREE.AxesHelper(500))
       this.renderer.setSize(this.width, this.height)
       this.$refs['topology-img'].appendChild(this.renderer.domElement)
     },
@@ -170,33 +176,33 @@ export default {
       let centerGroup = new THREE.Group()
       let floor = this.addCenterBottomFloor()
       centerGroup.add(floor)
-      // // 生产控制域
+      // 生产控制域
       // let PCDGroup = this.addProductionControlDomain()
       // centerGroup.add(PCDGroup)
       // 添加红墙区域
-      let centerRedWallGroup = this.addCenterRedWallCom()
-      centerGroup.add(centerRedWallGroup)
+      // let centerRedWallGroup = this.addCenterRedWallCom()
+      // centerGroup.add(centerRedWallGroup)
       // 内网办公域
-      let IODGroup = this.addintranetOfficeDomain()
-      centerGroup.add(IODGroup)
-      // // 移动作业终端
+      // let IODGroup = this.addintranetOfficeDomain()
+      // centerGroup.add(IODGroup)
+      // 移动作业终端
       // let moveHomeworkTerminalCom = this.addmoveHomeworkTerminal()
       // centerGroup.add(moveHomeworkTerminalCom)
-      // // 电力缴费pos
+      // 电力缴费pos
       // let powerPaymentCom = this.addpowerPayment()
       // centerGroup.add(powerPaymentCom)
-      // // 电力自助终端（社会）
+      // 电力自助终端（社会）
       // let powerSelfCom = this.addpowerSelf()
       // centerGroup.add(powerSelfCom)
-      // // 安全接入区
+      // 安全接入区
       // let safetyAccessAreaCom = this.addsafetyAccessArea()
       // centerGroup.add(safetyAccessAreaCom)
       // // 安全接入平台
-      // let safetyAccessPlatfrom1Com = this.addsafetyAccessPlatfrom1()
-      // centerGroup.add(safetyAccessPlatfrom1Com)
-      // // 安全接入平台
       // let safetyAccessPlatfromCom = this.addsafetyAccessPlatfrom()
       // centerGroup.add(safetyAccessPlatfromCom)
+      // // 安全接入平台
+      // let safetyAccessPlatfrom1Com = this.addsafetyAccessPlatfrom1()
+      // centerGroup.add(safetyAccessPlatfrom1Com)
 
       // // API网关
       // let APIwangguan = this.addAPIwangguan()
@@ -212,10 +218,10 @@ export default {
       // centerGroup.add(ElectricityConsumptionInformation)
       this.scene.add(centerGroup)
       let rightGroup = new THREE.Group()
-      // // 信息网络安全隔离装置
+      // 信息网络安全隔离装置
       // let networkSecurityCom = this.addnetworkSecurity()
       // rightGroup.add(networkSecurityCom)
-      // // 互联网大区
+      // 互联网大区
       // let InternetRegionCom = this.addInternetRegion()
       // rightGroup.add(InternetRegionCom)
       this.scene.add(rightGroup)
@@ -245,8 +251,57 @@ export default {
         geometry.rotation.copy(this.camera.rotation)
         geometry.updateMatrix()
       })
+      TWEEN.update()
 
       this.renderer.render(this.scene, this.camera)
+    },
+    /**
+     * @Author: luo1o1o1o
+     * @QQ: 330240995, @PHONE: 17600071321
+     * @Date: 2020-11-27 16:43
+     * @desc: 设置鼠标事件
+     */
+    initMouseEvent() {
+      // this.raycaster = new THREE.Raycaster() // 光线投射，确定鼠标点击位置
+      // this.mouse = new THREE.Vector2() // 二维平面坐标
+      this.renderer.domElement.addEventListener(
+        'mousemove',
+        this.mousemove,
+        false
+      )
+    },
+    /**
+     * @Author: luo1o1o1o
+     * @QQ: 330240995, @PHONE: 17600071321
+     * @Date: 2020-11-27 16:47
+     * @desc: 鼠标点击事件
+     */
+    mousemove(e) {
+      e.preventDefault()
+      let intersects = this.getIntersects(
+        e,
+        this.renderer,
+        this.camera,
+        this.scene
+      )
+      // let dom = this.scene.getObjectByName('glxxdq')
+      if (intersects.length != 0) {
+        let find = []
+        intersects.forEach((item) => {
+          let hoverStr = this.hoverDict[item.object.name] || ''
+          if (hoverStr && hoverStr != '' && find.indexOf[hoverStr] != -1) {
+            find.push(hoverStr)
+          }
+        })
+        for (let i in this.hoverDict) {
+          let dom = this.scene.getObjectByName(this.hoverDict[i])
+          dom.visible = false
+        }
+        find.forEach((key) => {
+          let dom = this.scene.getObjectByName(key)
+          dom.visible = true
+        })
+      }
     },
   },
 }

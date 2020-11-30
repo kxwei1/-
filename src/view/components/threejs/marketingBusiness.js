@@ -33,9 +33,6 @@ let marketingBusinessCom = {
         0
       )
 
-
-
-
       let bottomGround = this.addCubeBox({
         x: x,
         y: y,
@@ -72,6 +69,20 @@ let marketingBusinessCom = {
       let group = new THREE.Group()
       group.position.y = y
       let pw = z / 5 // 分成五分排列
+
+
+
+      let title = this.addTextGrometry({
+        txt: '营销业务应用',
+        fontSize: 20,
+        color: 0xffd700,
+        toTop: true
+      })
+      title.geometry.center()
+      title.position.y += title.geometry.boundingBox.max.y
+      title.position.x = this.productionControlDomainSize.x / 2 + 60
+      title.rotateY(Math.PI / 2)
+      group.add(title)
       // 添加 应用服务器集群
       let yyfwqjqTxt = this.addTextGrometry({
         txt: '应用服务器集群',
@@ -191,46 +202,46 @@ let marketingBusinessCom = {
       })
       yxjcsjptBox.position.z = z / 2 + 180 / 2 + 50
       yxjcsjptBox.position.x = x / 2 - 78
+
       group.add(yxjcsjptBox)
-      let yxjcsjptline = this.addParallelLine(
-        [
-          { x: x / 2 - 55, y: 0, z: z / 2 },
-          { x: x / 2 - 55, y: 0, z: z / 2 + 123 },
-          { x: x / 2 - 78 + 4, y: 0, z: z / 2 + 123 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+      let point = [
+        { x: x / 2 - 55, y: 0, z: z / 2 },
+        { x: x / 2 - 55, y: 0, z: z / 2 + 123 },
+        { x: x / 2 - 78, y: 0, z: z / 2 + 123 },
+      ]
+      let point2 = [
+        { x: x / 2 - 78 + 10 - 10, y: 0, z: z / 2 + 133 },
+        { x: x / 2 - 55 + 10, y: 0, z: z / 2 + 133 },
+        { x: x / 2 - 55 + 10, y: 0, z: z / 2 },
+      ]
+      let line = this.addPolyline({
+        point: point,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
-      yxjcsjptline.position.y = -36 / 2
-      group.add(yxjcsjptline)
-      //营销地理信息系统
-      let yxdlxxxtBox = this.addBoxFaceText({
-        x: 8,
-        y: 36,
-        z: 180,
-        txt: '营销地理信息系统'
-      }
-      )
-      yxdlxxxtBox.position.z = z + 110
-      yxdlxxxtBox.position.x = x / 2 - 180
-      group.add(yxdlxxxtBox)
-      let yxdlxxxtline = this.addParallelLine(
-        [
-          { x: x / 2 - 157.5, y: 0, z: z / 2 },
-          { x: x / 2 - 157.5, y: 0, z: z / 2 + 263 },
-          { x: x / 2 - 180.5 + 4, y: 0, z: z / 2 + 263 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+      })
+      line.position.y = -36 / 2
+      group.add(line)
+      let line2 = this.addPolyline({
+        point: point2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
-      yxdlxxxtline.position.y = -36 / 2
-      group.add(yxdlxxxtline)
+      })
+      line2.position.y = -36 / 2
+      group.add(line2)
+
       //营销稽查监控
       let yxjcjkBox = this.addBoxFaceText({
         x: 8,
@@ -239,24 +250,49 @@ let marketingBusinessCom = {
         txt: '营销稽查监控'
       }
       )
-      yxjcjkBox.position.z = z - 20
-      yxjcjkBox.position.x = x / 2 - 230
       group.add(yxjcjkBox)
-      let yxjcjkline = this.addParallelLine(
-        [
-          { x: x / 2 - 207.5, y: 0, z: z / 2 },
-          { x: x / 2 - 207.5, y: 0, z: z / 2 + 143 },
-          { x: x / 2 - 230.5 + 4, y: 0, z: z / 2 + 143 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+      yxjcjkBox.position.z = z - 20
+
+      yxjcjkBox.position.x = x / 2 - 230
+
+
+
+      let yxjcjkpoint = [
+        { x: x / 2 - 207.5, y: 0, z: z / 2 },
+        { x: x / 2 - 207.5, y: 0, z: z / 2 + 143 },
+        { x: x / 2 - 230.5, y: 0, z: z / 2 + 143 },
+      ]
+      let yxjcjkpoint2 = [
+        { x: x / 2 - 230.5, y: 0, z: z / 2 + 143 + 10 },
+        { x: x / 2 - 207.5 + 10, y: 0, z: z / 2 + 143 + 10 },
+        { x: x / 2 - 207.5 + 10, y: 0, z: z / 2 },
+      ]
+      let yxjcjkline = this.addPolyline({
+        point: yxjcjkpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
+      })
       yxjcjkline.position.y = -36 / 2
       group.add(yxjcjkline)
-
+      let yxjcjkline2 = this.addPolyline({
+        point: yxjcjkpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      yxjcjkline2.position.y = -36 / 2
+      group.add(yxjcjkline2)
       //计量生产调度平台
 
       let jlscddptBox = this.addBoxFaceText({
@@ -269,20 +305,45 @@ let marketingBusinessCom = {
       jlscddptBox.position.z = z + 185
       jlscddptBox.position.x = x / 2 - 330
       group.add(jlscddptBox)
-      let jlscddpline = this.addParallelLine(
-        [
-          { x: x / 2 - 307.5, y: 0, z: z / 2 },
-          { x: x / 2 - 307.5, y: 0, z: z / 2 + 343 },
-          { x: x / 2 - 330.5 + 4, y: 0, z: z / 2 + 343 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+      let jlscddppoint = [
+        { x: x / 2 - 307.5, y: 0, z: z / 2 },
+        { x: x / 2 - 307.5, y: 0, z: z / 2 + 343 },
+        { x: x / 2 - 330.5, y: 0, z: z / 2 + 343 },
+      ]
+      let jlscddppoint2 = [
+        { x: x / 2 - 330.5, y: 0, z: z / 2 + 343 + 10 },
+        { x: x / 2 - 307.5 + 10, y: 0, z: z / 2 + 343 + 10 },
+        { x: x / 2 - 307.5 + 10, y: 0, z: z / 2 },
+      ]
+      let jlscddpline = this.addPolyline({
+        point: jlscddppoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
+      })
       jlscddpline.position.y = -36 / 2
       group.add(jlscddpline)
+      let jlscddpline2 = this.addPolyline({
+        point: jlscddppoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      jlscddpline2.position.y = -36 / 2
+      group.add(jlscddpline2)
+
+
       //电能管理服务平台
       let dnglfwptBox = this.addBoxFaceText({
         x: 8,
@@ -294,20 +355,48 @@ let marketingBusinessCom = {
       dnglfwptBox.position.z = z + -100
       dnglfwptBox.position.x = x / 2 - 380
       group.add(dnglfwptBox)
-      let dnglfwptline = this.addParallelLine(
-        [
-          { x: x / 2 - 357.5, y: 0, z: z / 2 },
-          { x: x / 2 - 357.5, y: 0, z: z / 2 + 58 },
-          { x: x / 2 - 380.5 + 4, y: 0, z: z / 2 + 58 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+      let dnglfwptppoint = [
+        { x: x / 2 - 357.5, y: 0, z: z / 2 },
+        { x: x / 2 - 357.5, y: 0, z: z / 2 + 58 },
+        { x: x / 2 - 380.5, y: 0, z: z / 2 + 58 },
+      ]
+      let dnglfwptpoint2 = [
+        { x: x / 2 - 380.5, y: 0, z: z / 2 + 58 + 10 },
+        { x: x / 2 - 357.5 + 10, y: 0, z: z / 2 + 58 + 10 },
+        { x: x / 2 - 357.5 + 10, y: 0, z: z / 2 },
+      ]
+      let dnglfwptline = this.addPolyline({
+        point: dnglfwptppoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
+      })
       dnglfwptline.position.y = -36 / 2
       group.add(dnglfwptline)
+      let dnglfwptline2 = this.addPolyline({
+        point: dnglfwptpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      dnglfwptline2.position.y = -36 / 2
+      group.add(dnglfwptline2)
+
+
+
+
+
       //计量资产全寿命周期管理系统
       let jlzcqsmzqglxtBox = this.addBoxFaceText({
         x: 8,
@@ -319,20 +408,49 @@ let marketingBusinessCom = {
       jlzcqsmzqglxtBox.position.z = z + 50
       jlzcqsmzqglxtBox.position.x = x / 2 - 430
       group.add(jlzcqsmzqglxtBox)
-      let jlzcqsmzqglxtline = this.addParallelLine(
-        [
-          { x: x / 2 - 332.5, y: 0, z: z / 2 },
-          { x: x / 2 - 332.5, y: 0, z: z / 2 + 228 },
-          { x: x / 2 - 430.5 + 4, y: 0, z: z / 2 + 228 }
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+
+
+      let jlzcqsmzqglxtpoint = [
+        { x: x / 2 - 332.5, y: 0, z: z / 2 },
+        { x: x / 2 - 332.5, y: 0, z: z / 2 + 228 },
+        { x: x / 2 - 430.5, y: 0, z: z / 2 + 228 },
+      ]
+      let jlzcqsmzqglxtpoint2 = [
+        { x: x / 2 - 430.5, y: 0, z: z / 2 + 228 + 10 },
+        { x: x / 2 - 332.5 + 10, y: 0, z: z / 2 + 228 + 10 },
+        { x: x / 2 - 332.5 + 10, y: 0, z: z / 2 },
+      ]
+      let jlzcqsmzqglxtline = this.addPolyline({
+        point: jlzcqsmzqglxtpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
+      })
       jlzcqsmzqglxtline.position.y = -36 / 2
       group.add(jlzcqsmzqglxtline)
+      let jlzcqsmzqglxtline2 = this.addPolyline({
+        point: jlzcqsmzqglxtpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      jlzcqsmzqglxtline2.position.y = -36 / 2
+      group.add(jlzcqsmzqglxtline2)
+
+
+
+
       //市场化售电业务应用系统
       let schsdywyyxtBox = this.addBoxFaceText({
         x: 8,
@@ -344,69 +462,160 @@ let marketingBusinessCom = {
       schsdywyyxtBox.position.z = z - 250
       schsdywyyxtBox.position.x = x / 2 - 460
       group.add(schsdywyyxtBox)
-      let schsdywyyxtline = this.addParallelLine(
-        [
-          { x: x / 2 - 332.5, y: 0, z: z / 2 - 50 },
-          { x: x / 2 - 382.5, y: 0, z: z / 2 - 50 },
-          { x: x / 2 - 462.5, y: 0, z: z / 2 - 50 },
 
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+
+      let schsdywyyxtpoint = [
+        { x: x / 2 - 332.5, y: 0, z: z / 2 - 50 },
+        { x: x / 2 - 462.5, y: 0, z: z / 2 - 50 },
+      ]
+      let schsdywyyxtpoint2 = [
+        { x: x / 2 - 462.5, y: 0, z: z / 2 - 50 + 10 },
+        { x: x / 2 - 332.5, y: 0, z: z / 2 - 50 + 10 },
+      ]
+      let schsdywyyxtline = this.addPolyline({
+        point: schsdywyyxtpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
+      })
       schsdywyyxtline.position.y = -36 / 2
       group.add(schsdywyyxtline)
-
-      //用电信息采集连线
-      let ElectricityConsumptionInformationLine = this.addParallelLine(
-        [
-          { x: x / 2 - 127.5 + 4, y: 25, z: z / 2 + 819 },
-          { x: x / 2 - 127.5, y: 25, z: z / 2 - 99 },
-          { x: x / 2 - 127.5, y: 25, z: z / 2 - 100 },
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+      let schsdywyyxtline2 = this.addPolyline({
+        point: schsdywyyxtpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
-      ElectricityConsumptionInformationLine.position.y = -36 / 2
-      group.add(ElectricityConsumptionInformationLine)
+      })
+      schsdywyyxtline2.position.y = -36 / 2
+      group.add(schsdywyyxtline2)
+      //用电信息采集连线
+
+      let ElectricityConsumptionInformationpoint = [
+        { x: x / 2 - 127.5, y: 25, z: z / 2 + 819 },
+        // { x: x / 2 - 127.5, y: 25, z: z / 2 - 99 },
+        { x: x / 2 - 127.5, y: 25, z: z / 2 - 100 },
+      ]
+      let ElectricityConsumptionInformationpoint2 = [
+        { x: x / 2 - 127.5 + 15, y: 25, z: z / 2 - 100 },
+        // { x: x / 2 - 127.5, y: 25, z: z / 2 - 99 },
+        { x: x / 2 - 127.5 + 15, y: 25, z: z / 2 + 819 },
+      ]
+      let ElectricityConsumptionInformationline = this.addPolyline({
+        point: ElectricityConsumptionInformationpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      ElectricityConsumptionInformationline.position.y = -36 / 2
+      group.add(ElectricityConsumptionInformationline)
+      let ElectricityConsumptionInformationline2 = this.addPolyline({
+        point: ElectricityConsumptionInformationpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      ElectricityConsumptionInformationline2.position.y = -36 / 2
+      group.add(ElectricityConsumptionInformationline2)
+
 
       //营销移动作业
-      let MarketingMobileJobine = this.addParallelLine(
-        [
-          { x: x / 2 - 332.5, y: 25, z: z / 2 - 640 },
-          { x: x / 2 - 332.5, y: 25, z: z / 2 - 349 },
-          { x: x / 2 - 332.5, y: 25, z: z / 2 - 350 },
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+      let MarketingMobileJobpoint = [
+        { x: x / 2 - 332.5, y: 25, z: z / 2 - 640 },
+        { x: x / 2 - 332.5, y: 25, z: z / 2 - 350 },
+      ]
+      let MarketingMobileJobpoint2 = [
+        { x: x / 2 - 332.5 + 15, y: 25, z: z / 2 - 350 },
+        { x: x / 2 - 332.5 + 15, y: 25, z: z / 2 - 640 },
+      ]
+      let MarketingMobileJobline = this.addPolyline({
+        point: MarketingMobileJobpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
-      MarketingMobileJobine.position.y = -36 / 2
-      group.add(MarketingMobileJobine)
+      })
+      MarketingMobileJobline.position.y = -36 / 2
+      group.add(MarketingMobileJobline)
+      let MarketingMobileJobline2 = this.addPolyline({
+        point: MarketingMobileJobpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      MarketingMobileJobline2.position.y = -36 / 2
+      group.add(MarketingMobileJobline2)
+
+
+
 
       //添加API网关模块
-      let APIwangguanLine = this.addParallelLine(
-        [
-          { x: x / 2 - 127.5 + 4, y: 25, z: z / 2 - 1323 },
-          { x: x / 2 - 127.5, y: 25, z: z / 2 - 349 },
-          { x: x / 2 - 127.5, y: 25, z: z / 2 - 350 },
-        ],
-        {
-          color: 0x1eeafa,
-          startDirection: 'v', // 开始节点为水平
-          endDirection: 'h' // 结束点为垂直
+
+      let APIwangguanpoint = [
+        { x: x / 2 - 127.5, y: 25, z: z / 2 - 1323 },
+        { x: x / 2 - 127.5, y: 25, z: z / 2 - 350 },
+      ]
+      let APIwangguanpoint2 = [
+        { x: x / 2 - 127.5 + 15, y: 25, z: z / 2 - 350 },
+        { x: x / 2 - 127.5 + 15, y: 25, z: z / 2 - 1323 },
+      ]
+      let APIwangguanline = this.addPolyline({
+        point: APIwangguanpoint,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
         }
-      )
-      APIwangguanLine.position.y = -36 / 2
-      group.add(APIwangguanLine)
+      })
+      APIwangguanline.position.y = -36 / 2
+      group.add(APIwangguanline)
+      let APIwangguanline2 = this.addPolyline({
+        point: APIwangguanpoint2,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      })
+      APIwangguanline2.position.y = -36 / 2
+      group.add(APIwangguanline2)
+
       // 采集成功率
       let cjcglBox = this.addFloatBoxFaceText()
       cjcglBox.position.z = z + 650
@@ -416,113 +625,158 @@ let marketingBusinessCom = {
 
       //采集成功率线段
 
-      let cjcglRightLine = this.addLine(
-        [
-          { x: x / 2 - 510, y: 26, z: z / 2 + 749 },
-          { x: x / 2 - 510, y: 26, z: z / 2 + 849 },
-          { x: x / 2 - 510, y: 65, z: z / 2 + 849 },
+      let cjcglRightLine = this.addLine({
+        point: [
+          { x: x / 2 - 510, y: 26, z: z / 2 + 749, tag: 0 },
+          { x: x / 2 - 510, y: 26, z: z / 2 + 849, tag: 1 },
+          { x: x / 2 - 510, y: 65, z: z / 2 + 849, tag: 2 },
 
         ],
-        {
-          color: 0x1C9ED8,
+        color: 0x1eeafa,
+        startDirection: 'v', // 开始节点为水平
+        endDirection: 'h', // 结束点为垂直
+        arrow: {
+          show: true,
+          color: 0x1eeafa,
+          scale: 0.8
         }
-      )
+      })
       cjcglRightLine.position.y = -36 / 2
       group.add(cjcglRightLine)
       // 营销专业办公终端
       let yxzybgzdBox = this.addFloatBoxFaceText1()
       yxzybgzdBox.position.z = z - 130
       yxzybgzdBox.position.x = x / 2 - 760
+      yxzybgzdBox.name = 'centerBottomFloor'
+
       group.add(yxzybgzdBox)
       // 办公终端使用情况
       let bgzdsyqkBox = this.addFloatBoxFaceText2()
       bgzdsyqkBox.position.z = z - 630
       bgzdsyqkBox.position.x = x / 2 - 760
+      bgzdsyqkBox.name = 'centerBottomFloor1'
+
       group.add(bgzdsyqkBox)
       // 系统账号
       let zhxtBox = this.addFloatBoxFaceText3()
       zhxtBox.position.z = z - 630
       zhxtBox.position.y = y + 50
       zhxtBox.position.x = x / 2 - 460
+      zhxtBox.name = 'centerBottomFloor2'
+
       group.add(zhxtBox)
-      // 总调用次数
-      let zdycsBox = this.addFloatBoxFaceText4()
-      zdycsBox.position.z = z - 750
-      zdycsBox.position.x = x / 2 - 30
-      group.add(zdycsBox)
+      // // 总调用次数
+      // let zdycsBox = this.addFloatBoxFaceText4()
+      // zdycsBox.position.z = z - 750
+      // zdycsBox.position.x = x / 2 - 30
+      // group.add(zdycsBox)
       //接口交互总次数
       let jkjhzcsBox = this.addFloatBoxFaceText5()
       jkjhzcsBox.position.z = z - 1550
       jkjhzcsBox.position.x = x / 2 - 760
       group.add(jkjhzcsBox)
-      //移动作业终端
-      let ydzyzdBox = this.addFloatBoxFaceText7()
-      ydzyzdBox.position.z = z - 350
-      ydzyzdBox.position.x = x / 2 - 960
-      ydzyzdBox.position.y = 80
-      group.add(ydzyzdBox)
+      // //移动作业终端
+      // let ydzyzdBox = this.addFloatBoxFaceText7()
+      // ydzyzdBox.position.z = z - 350
+      // ydzyzdBox.position.x = x / 2 - 960
+      // ydzyzdBox.position.y = 80
+      // group.add(ydzyzdBox)
 
+      // 添加线段 安全接入区
+      let aqjrqLeftLine = this.addPolyline({
+        point: [
+          { x: x / 2 - 400, y: 26, z: z / 2 + 990 },
+          { x: x / 2 - 580, y: 26, z: z / 2 + 990 },
+          { x: x / 2 - 580, y: 60, z: z / 2 + 990 },
+          { x: x / 2 - 1375, y: 60, z: z / 2 + 990 },
+          { x: x / 2 - 1375, y: 60, z: z / 2 + 920 },
+        ],
+        color: 0x5af9ff,
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      }
+      )
+      aqjrqLeftLine.position.y = -36 / 2
+      group.add(aqjrqLeftLine)
+      let aqjrqRightLine = this.addPolyline({
 
-      // // 添加线段 安全接入区
-      // let aqjrqLeftLine = this.addLine(
-      //   [
-      //     { x: x / 2 - 400, y: 26, z: z / 2 + 990 },
-      //     { x: x / 2 - 580, y: 26, z: z / 2 + 990 },
-      //     { x: x / 2 - 580, y: 60, z: z / 2 + 990 },
-      //     { x: x / 2 - 1375, y: 60, z: z / 2 + 990 },
-      //     { x: x / 2 - 1375, y: 60, z: z / 2 + 920 },
-      //   ]
-      // )
-      // aqjrqLeftLine.position.y = -36 / 2
-      // group.add(aqjrqLeftLine)
-      // let aqjrqRightLine = this.addLine(
-      //   [
-      //     { x: x / 2 - 400, y: 26, z: z / 2 + 749 },
-      //     { x: x / 2 - 580, y: 26, z: z / 2 + 749 },
-      //     { x: x / 2 - 580, y: 60, z: z / 2 + 749 },
-      //     { x: x / 2 - 1175, y: 60, z: z / 2 + 749 },
-      //   ]
-      // )
-      // aqjrqRightLine.position.y = -36 / 2
-      // group.add(aqjrqRightLine)
+        point: [
+          { x: x / 2 - 1175, y: 60, z: z / 2 + 749 },
+          { x: x / 2 - 580, y: 60, z: z / 2 + 749 },
+          { x: x / 2 - 580, y: 26, z: z / 2 + 749 },
+          { x: x / 2 - 400, y: 26, z: z / 2 + 749 },
+        ],
+        color: 0x5af9ff,
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      }
+      )
+      aqjrqRightLine.position.y = -36 / 2
+      group.add(aqjrqRightLine)
 
-      // // 内网办公区域
-      // let newgqyLeftLine = this.addLine(
-      //   [
-      //     { x: x / 2 - 400, y: 25, z: z / 2 - 180 },
-      //     { x: x / 2 - 580, y: 25, z: z / 2 - 180 },
-      //     { x: x / 2 - 580, y: 60, z: z / 2 - 180 },
-      //     { x: x / 2 - 725, y: 60, z: z / 2 - 180 },
-      //   ]
-      // )
-      // newgqyLeftLine.position.y = -36 / 2
-      // group.add(newgqyLeftLine)
-      // let newgqyRightLine = this.addLine(
-      //   [
-      //     { x: x / 2 - 400, y: 25, z: z / 2 - 30 - 180 },
-      //     { x: x / 2 - 580, y: 25, z: z / 2 - 30 - 180 },
-      //     { x: x / 2 - 580, y: 60, z: z / 2 - 30 - 180 },
-      //     { x: x / 2 - 725, y: 60, z: z / 2 - 30 - 180 },
-      //   ]
-      // )
-      // newgqyRightLine.position.y = -36 / 2
-      // group.add(newgqyRightLine)
+      // 内网办公区域
+      let newgqyLeftLine = this.addPolyline({
+        point: [
+          { x: x / 2 - 725, y: 60, z: z / 2 - 180 },
+          { x: x / 2 - 580, y: 60, z: z / 2 - 180 },
+          { x: x / 2 - 580, y: 25, z: z / 2 - 180 },
+          { x: x / 2 - 400, y: 25, z: z / 2 - 180 },
+        ],
+        color: 0x5af9ff,
+        arrow: {
+          show: true,
+          color: 0x5af9ff,
+          scale: 0.8
+        }
+      }
+      )
+      newgqyLeftLine.position.y = -36 / 2
+      group.add(newgqyLeftLine)
+      let newgqyRightLine = this.addPolyline(
+        {
+          point: [
+            { x: x / 2 - 400, y: 25, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 580, y: 25, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 580, y: 60, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 725, y: 60, z: z / 2 - 30 - 180 },
+          ],
+          color: 0x5af9ff,
+          arrow: {
+            show: true,
+            color: 0x5af9ff,
+            scale: 0.8
+          }
+        }
+      )
+      newgqyRightLine.position.y = -36 / 2
+      group.add(newgqyRightLine)
 
-      // let zhxtLine = this.addLine(
-      //   [
-      //     { x: x / 2 - 460, y: 25, z: z / 2 - 30 - 180 },
-      //     { x: x / 2 - 460, y: 25, z: z / 2 - 30 - 350 },
-      //     { x: x / 2 - 460, y: 60, z: z / 2 - 30 - 350 },
-      //   ]
-      // )
-      // zhxtLine.position.y = -36 / 2
-      // group.add(zhxtLine)
+      let zhxtLine = this.addPolyline(
 
-
-
-
+        {
+          point: [
+            { x: x / 2 - 460, y: 25, z: z / 2 - 30 - 180 },
+            { x: x / 2 - 460, y: 25, z: z / 2 - 30 - 350 },
+            { x: x / 2 - 460, y: 60, z: z / 2 - 30 - 350 },
+          ],
+          color: 0x5af9ff,
+          arrow: {
+            show: false,
+            color: 0x5af9ff,
+            scale: 0.8
+          }
+        }
+      )
+      zhxtLine.position.y = -36 / 2
+      group.add(zhxtLine)
       return group
-    }
+    },
   }
 }
 export default marketingBusinessCom
